@@ -19,9 +19,7 @@ Infactoe is a strategic variation of Tic-tac-toe where players must carefully ma
 1. Players take turns placing their marks (X or O) on the grid
 2. Each player can only have 3 active cells at a time
 3. When a player makes their 4th move, their oldest cell is removed
-4. The game continues until:
-   - A player gets 3 of their marks in a row (horizontally, vertically, or diagonally)
-   - The board is full and no player has won (draw)
+4. The game continues until a player gets 3 of their marks in a row (horizontally, vertically, or diagonally)
 
 ## 🎮 How to Play
 

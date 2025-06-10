@@ -172,8 +172,61 @@ class Game:
                     self.player_turn = not self.player_turn
             
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and self.game_over:
-                    self.clear_board()  # Use the new clear_board method
+                if self.game_over:
+                    if event.key == pygame.K_SPACE:
+                        self.clear_board()  # Use the new clear_board method
+                else:
+                    if event.key == pygame.K_1:
+                        cell = (0, 0)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_2:
+                        cell = (0, 1)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_3:
+                        cell = (0, 2)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_4:
+                        cell = (1, 0)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_5:
+                        cell = (1, 1)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_6:
+                        cell = (1, 2)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_7:
+                        cell = (2, 0)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_8:
+                        cell = (2, 1)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_9:
+                        cell = (2, 2)
+                        if self.board[cell[0]][cell[1]] == " ":
+                            self.players[self.player_turn].make_move(self.board, cell[0], cell[1])
+                            self.player_turn = not self.player_turn
+                    elif event.key == pygame.K_r:
+                        self.clear_board()
+                    elif event.key == pygame.K_q:
+                        pygame.quit()
+                        sys.exit(0)
+
 
     def run(self) -> None:
         """Main game loop with improved visuals and responsiveness."""

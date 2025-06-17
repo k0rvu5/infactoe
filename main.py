@@ -14,7 +14,7 @@ class Player:
         # Remove the oldest cell if we have 3 active cells
         if len(self.active_cells) == 3:
             old_row, old_col = self.active_cells.pop(0)
-            board[old_row][old_col] = " "  # Clear the oldest cell
+            board[old_row][old_col] = " "
         
         # Add the new move
         self.active_cells.append((row, column))
@@ -31,13 +31,13 @@ class Game:
         pygame.init()
         self.WIDTH: int = 600
         self.HEIGHT: int = 600
-        self.GRID_WIDTH: int = 4  # Thinner grid lines
+        self.GRID_WIDTH: int = 4
         self.CELL_SIZE: int = self.WIDTH // 3
         
         # Colors
-        self.BG_COLOR: Tuple[int, int, int] = (40, 40, 40)  # Dark gray background
-        self.GRID_COLOR: Tuple[int, int, int] = (200, 200, 200)  # Light gray grid
-        self.TEXT_COLOR: Tuple[int, int, int] = (255, 255, 255)  # White text
+        self.BG_COLOR: Tuple[int, int, int] = (30, 30, 46)
+        self.GRID_COLOR: Tuple[int, int, int] = (205, 214, 244)
+        self.TEXT_COLOR: Tuple[int, int, int] = (255, 255, 255)
         
         # Initialize display
         self.screen: pygame.Surface = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
@@ -46,8 +46,8 @@ class Game:
         # Initialize game state
         self.board: List[List[str]] = [[" " for _ in range(3)] for _ in range(3)]
         self.players: List[Player] = [
-            Player("X", (255, 50, 50)),  # Bright red
-            Player("O", (50, 150, 255))  # Bright blue
+            Player("X", (243, 139, 168)),
+            Player("O", (116, 199, 236))
         ]
         self.player_turn: bool = False  # False for Player X, True for Player O
         self.game_over: bool = False
@@ -91,14 +91,14 @@ class Game:
                 # Use darker color for the oldest cell (index 0)
                 if player.symbol == "X":
                     if i == 0 and len(player.active_cells) == 3:
-                        color = (128, 25, 25)
+                        color = tuple(c // 2 for c in player.color)
                     else:
-                        color = (255, 50, 50)
+                        color = player.color
                 else:
                     if i == 0 and len(player.active_cells) == 3:
-                        color = (25, 75, 128)
+                        color = tuple(c // 2 for c in player.color)
                     else:
-                        color = (50, 150, 255)
+                        color = player.color
                 
                 # Draw the symbol with adjusted color
                 font = pygame.font.Font(None, 160)
@@ -174,7 +174,7 @@ class Game:
             elif event.type == pygame.KEYDOWN:
                 if self.game_over:
                     if event.key == pygame.K_SPACE:
-                        self.clear_board()  # Use the new clear_board method
+                        self.clear_board()
                 else:
                     if event.key == pygame.K_1:
                         cell = (0, 0)
